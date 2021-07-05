@@ -1,0 +1,79 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="titulo">PERSONAS FISICAS</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="titulo">{{ accion | uppercase }} PERSONAS</h5>
+
+                    <form [formGroup]="form" (ngSubmit)="GuardarPersona()"> 
+                        <div class="row">
+                            <div class="col">
+                              <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre" aria-label="Nombre">
+                            </div>
+                            <div class="col">
+                              <input formControlName="apellidopaterno" type="text" class="form-control" placeholder="Apellido Paterno" aria-label="Apellido Paterno">
+                            </div>
+                            <div class="col">
+                              <input formControlName="apellidomaterno" type="text" class="form-control" placeholder="Apellido Materno" aria-label="Apellido Materno">
+                            </div>
+                          </div>
+                          
+                          <br>
+
+                          <div class="row">
+                            <div class="col">
+                              <input formControlName="rfc" type="text" class="form-control" placeholder="RFC" aria-label="RFC"  maxLength="13">
+                            </div>
+                            <div class="col">
+                                <input formControlName="fechanacimiento" id="date" class="form-control" type="date" maxLength="10">
+                            </div>
+                          </div>
+                          <br>
+                          <div class="d-grid gap-2">
+                            <button class="btn btn-primary" type="submit">Aceptar</button>
+                          </div>
+                    </form>
+                    
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="titulo">Listado de Personas</h5>
+                    <table class="table">
+                        <tbody>
+                            <tr *ngFor="let datos of listapersonas">
+                                <td>{{ datos.idPersonaFisica }}</td>
+                                <td>{{ datos.nombre}}</td>
+                                <td>{{ datos.apellidoPaterno }}</td>
+                                <td>{{ datos.apellidoMaterno }}</td>
+                                <td>{{ datos.rfc }}</td>
+                                <td>{{ datos.fechaNacimiento }}</td>
+                                <td>
+                                    <i (click)="EditarPersona(datos)" class="far fa-edit text-info"></i>
+                                </td>
+                                <td>
+                                    <i (click)="EliminarPersona(datos.idPersonaFisica)" class="fas fa-trash-alt text-danger"></i>
+                                </td>
+                                <td><i class="far fa-eye"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
